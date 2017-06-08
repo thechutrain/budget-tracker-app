@@ -1,8 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
+import App from './App/App'
 import store from './store'
 import { Provider } from 'react-redux'
+// ======= TESTING PURPOSES ============
+import { addExpense } from './actions/expenseActions'
 
 ReactDOM.render(
 	<Provider store={store}><App /></Provider>,
@@ -10,4 +12,11 @@ ReactDOM.render(
 )
 
 // ===== Testing ============
-store.dispatch({ type: 'ADD_EXPENSE' })
+// store.dispatch({ type: 'ADD_EXPENSE' })
+store.dispatch(addExpense({ test: 'hell yeah' }))
+store.dispatch(addExpense({ test: 'again' }))
+
+// WITH THUNK --> you can pass in an arrow function
+// store.dispatch(dispatcher => {
+// 	dispatcher(addExpense({}))
+// })
