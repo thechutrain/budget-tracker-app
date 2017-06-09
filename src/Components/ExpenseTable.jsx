@@ -4,7 +4,7 @@ import Moment from 'moment'
 // helper function
 function displayRow(props) {
 	return (
-		<tr>
+		<tr key={props._id}>
 			<td>{Moment(props.date).format('MMMM Do')}</td>
 			<td>{props.details}</td>
 			<td>{props.type}</td>
