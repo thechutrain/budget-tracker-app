@@ -24,7 +24,7 @@ class ExpenseForm extends Component {
 			details: '',
 			amount: '',
 			type: '',
-			date: ''
+			date: Moment().unix() * 1000
 		})
 	}
 

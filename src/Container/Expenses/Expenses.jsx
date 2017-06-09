@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
-import ExpenseRow from '../../Components/ExpenseRow.jsx'
+// import ExpenseRow from '../../Components/ExpenseRow.jsx'
 import ExpenseForm from '../../Components/ExpenseForm.jsx'
+import ExpenseTable from '../../Components/ExpenseTable.jsx'
 
 class Expenses extends Component {
 	// constructor(props) {
@@ -14,23 +15,24 @@ class Expenses extends Component {
 		if (this.props.expenses.length === 0) {
 			expenseDisplay = <p>No Expenses to Display</p>
 		} else {
-			expenseDisplay = (
-				<table>
-					<thead>
-						<tr>
-							<th> Date: </th>
-							<th> Type: </th>
-							<th> Details: </th>
-							<th> Amount: </th>
-						</tr>
-					</thead>
-					<tbody>
-						{this.props.expenses.map(expense =>
-							<ExpenseRow {...expense} key={expense._id} />
-						)}
-					</tbody>
-				</table>
-			)
+			expenseDisplay = <ExpenseTable expenses={this.props.expenses} />
+			// expenseDisplay = (
+			// 	<table>
+			// 		<thead>
+			// 			<tr>
+			// 				<th> Date: </th>
+			// 				<th> Type: </th>
+			// 				<th> Details: </th>
+			// 				<th> Amount: </th>
+			// 			</tr>
+			// 		</thead>
+			// 		<tbody>
+			// 			{this.props.expenses.map(expense =>
+			// 				<ExpenseRow {...expense} key={expense._id} />
+			// 			)}
+			// 		</tbody>
+			// 	</table>
+			// )
 		}
 		return (
 			<div className="Expenses">
