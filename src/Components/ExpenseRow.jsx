@@ -1,7 +1,7 @@
 import React from 'react'
 import Moment from 'moment'
 
-const SingleExpense = props =>
+const ExpenseRow = props =>
 	<tr>
 		<td>{Moment(props.date).format('MMMM Do')}</td>
 		<td>{props.details}</td>
@@ -14,4 +14,4 @@ const SingleExpense = props =>
 // 	<p>Amount: {props.amount}</p>
 // </li>
 
-export default SingleExpense
+export default ExpenseRow

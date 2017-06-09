@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import Moment from 'moment'
 // Redux actions
-import { addExpense } from '../../actions/expenseActions'
-import store from '../../store.js'
+import { addExpense } from '../actions/expenseActions'
+import store from '../store.js'
 
 class ExpenseForm extends Component {
 	constructor(props) {

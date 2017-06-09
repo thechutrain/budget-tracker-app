@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import logo from './logo.svg'
 import './App.css'
 // ==== other components ======
-import Expenses from '../Components-Smart/Expenses/Expenses.jsx'
+import Expenses from '../Container/Expenses/Expenses.jsx'
 
 class App extends Component {
 	render() {

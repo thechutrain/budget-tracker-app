@@ -2,12 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
-import SingleExpense from '../../Components-Dumb/SingleExpense.jsx'
-import ExpenseForm from './ExpenseForm.jsx'
-// import AddExpenseForm from '../../Components-Dumb/AddExpenseForm.jsx'
-// // Redux actions
-// import { addExpense } from '../../actions/expenseActions'
-// import store from '../../store.js'
+import ExpenseRow from '../../Components/ExpenseRow.jsx'
+import ExpenseForm from '../../Components/ExpenseForm.jsx'
 
 class Expenses extends Component {
 	// constructor(props) {
@@ -30,7 +26,7 @@ class Expenses extends Component {
 					</thead>
 					<tbody>
 						{this.props.expenses.map(expense =>
-							<SingleExpense {...expense} key={expense._id} />
+							<ExpenseRow {...expense} key={expense._id} />
 						)}
 					</tbody>
 				</table>
