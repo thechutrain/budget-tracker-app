@@ -10,11 +10,11 @@ class Expenses extends Component {
 	// 	super(props)
 	// }
 	render() {
-		return (
-			<div className="Expenses">
-				<h1>Hello from Expense Component </h1>
-				<ExpenseForm />
-				{/*  ====== Table ======*/}
+		let expenseDisplay = null
+		if (this.props.expenses.length === 0) {
+			expenseDisplay = <p>No Expenses to Display</p>
+		} else {
+			expenseDisplay = (
 				<table>
 					<thead>
 						<tr>
@@ -30,6 +30,14 @@ class Expenses extends Component {
 						)}
 					</tbody>
 				</table>
+			)
+		}
+		return (
+			<div className="Expenses">
+				<h1>Hello from Expense Component </h1>
+				<ExpenseForm />
+				{/*  ====== Table ======*/}
+				{expenseDisplay}
 			</div>
 		)
 	}
