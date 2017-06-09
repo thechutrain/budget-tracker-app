@@ -13,8 +13,15 @@ ReactDOM.render(
 
 // ===== Testing ============
 // store.dispatch({ type: 'ADD_EXPENSE' })
-store.dispatch(addExpense({ test: 'hell yeah' }))
-store.dispatch(addExpense({ test: 'again' }))
+store.dispatch(
+	addExpense({
+		amount: 19.99,
+		date: 1496966946 * 1000,
+		type: 'Dinning',
+		details: 'Trader Joes'
+	})
+)
+// store.dispatch(addExpense({ test: 'again' }))
 
 // WITH THUNK --> you can pass in an arrow function
 // store.dispatch(dispatcher => {

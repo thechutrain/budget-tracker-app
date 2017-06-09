@@ -1,0 +1,7 @@
+div.Expenses {
+  border: 1px solid red;
+}
+
+div.Expenses table {
+  width: 100%;
+}
