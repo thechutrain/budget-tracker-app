@@ -5,19 +5,14 @@ import './Expenses.css'
 import SingleExpense from '../../Components-Dumb/SingleExpense.jsx'
 import ExpenseForm from './ExpenseForm.jsx'
 // import AddExpenseForm from '../../Components-Dumb/AddExpenseForm.jsx'
-// Redux actions
-import { addExpense } from '../../actions/expenseActions'
-import store from '../../store.js'
+// // Redux actions
+// import { addExpense } from '../../actions/expenseActions'
+// import store from '../../store.js'
 
 class Expenses extends Component {
-	constructor(props) {
-		super(props)
-		this.onFormSubmit = this.onFormSubmit.bind(this)
-	}
-	onFormSubmit = () => {
-		console.warn('onFormSubmit is pressed!')
-		store.dispatch(addExpense({ type: 'testing 123', amount: 99 }))
-	}
+	// constructor(props) {
+	// 	super(props)
+	// }
 	render() {
 		return (
 			<div className="Expenses">

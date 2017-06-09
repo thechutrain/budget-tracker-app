@@ -5,3 +5,9 @@ div.Expenses {
 div.Expenses table {
   width: 100%;
 }
+
+form.ExpenseForm {
+  border: 2px dashed brown;
+  padding: 2em;
+  margin-bottom: 2em;
+}
