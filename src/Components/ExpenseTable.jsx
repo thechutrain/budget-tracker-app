@@ -1,24 +1,32 @@
 import React from 'react'
 import Moment from 'moment'
+// Redux actions
+// import { removeExpense } from '../actions/expenseActions'
+// import store from '../store.js'
 
-// helper function
+// ======== helper function ========
+// function deleteRow(id) {
+// 	return (
+// 		<div>
+// 			<p onClick={store.dispatch(removeExpense(id))}>delete me: {id}</p>
+// 			{/* <p>{JSON.stringify(props)}</p> */}
+// 		</div>
+// 	)
+// }
+
 function displayRow(props) {
-	// WONT WORK YO
-	// onClick = e => {
-	// 	e.preventDefault()
-	// 	alert('I was clicked!')
-	// }
 	return (
 		<tr key={props._id}>
 			<td>{Moment(props.date).format('MMMM Do')}</td>
 			<td>{props.details}</td>
 			<td>{props.type}</td>
 			<td>{props.amount}</td>
-			<td> EDIT/REMOVE smart component?</td>
+			{/* <td> {deleteRow(props._id)}</td> */}
 		</tr>
 	)
 }
 
+// ======== Main render component ========
 const ExpenseTable = props => {
 	return (
 		<table>
