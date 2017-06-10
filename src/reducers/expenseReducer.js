@@ -9,8 +9,8 @@ function addExpenseReducer(state, payload) {
 }
 
 function removeExpenseReducer(state, payload) {
-	const _id = payload
-	return state
+	const removeId = payload
+	return state.filter(expense => expense._id !== removeId)
 }
 
 // ======= Actual Reducer ============
