@@ -19,14 +19,14 @@ class Expenses extends Component {
 			expenseDisplay = (
 				<ExpenseTable
 					expenses={this.props.expenses}
-					onExpenseRemove={this.props.onExpenseRemove}
+					_removeExpense={this.props._removeExpense}
 				/>
 			)
 		}
 		return (
 			<div className="Expenses">
 				<h1>Add an Expense: </h1>
-				<ExpenseForm dispatchAddExpense={this.props.dispatchAddExpense} />
+				<ExpenseForm _addExpense={this.props._addExpense} />
 				{/*  ====== Table ======*/}
 				{expenseDisplay}
 				{/* {return this.props.expenses.length !==0 (<ExpenseTable expenses={this.props.expenses} />) : (<p>No Expenses to Display</p>)} */}
@@ -44,10 +44,10 @@ const mapStateToProps = store => {
 }
 const mapDispatchToProps = dispatch => {
 	return {
-		onExpenseRemove: id => {
+		_removeExpense: id => {
 			dispatch(removeExpense(id))
 		},
-		dispatchAddExpense: expObj => {
+		_addExpense: expObj => {
 			dispatch(addExpense(expObj))
 		}
 		// onExpenseSubmit: expense => {

@@ -18,7 +18,7 @@ class ExpenseForm extends Component {
 	handleSubmit = e => {
 		e.preventDefault() // NECESSARY, or else it'll submit to itself
 		// store.dispatch(addExpense(this.state))
-		this.props.dispatchAddExpense(this.state)
+		this.props._addExpense(this.state)
 		this.setState({
 			details: '',
 			amount: '',
