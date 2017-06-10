@@ -19,7 +19,7 @@ class Expenses extends Component {
 		}
 		return (
 			<div className="Expenses">
-				<h1>Hello from Expense Component </h1>
+				<h1>Add an Expense: </h1>
 				<ExpenseForm />
 				{/*  ====== Table ======*/}
 				{expenseDisplay}

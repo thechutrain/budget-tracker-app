@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Moment from 'moment'
+import { Form, FormGroup, Label, Input, Col } from 'reactstrap'
 // Redux actions
 import { addExpense } from '../actions/expenseActions'
 import store from '../store.js'
@@ -30,30 +31,77 @@ class ExpenseForm extends Component {
 
 	render() {
 		return (
-			<form className="ExpenseForm">
+			<Form>
+				<FormGroup row>
+					<Label htmlFor="details" sm={3}>Details:</Label>
+					<Col sm={9}>
+						<Input
+							type="text"
+							name="details"
+							value={this.state.details}
+							onChange={this.handleChange.bind(this, 'details')}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label htmlFor="amount" sm={3}> Amount: </Label>
+					<Col sm={9}>
+						<Input
+							type="text"
+							name="amount"
+							value={this.state.amount}
+							onChange={this.handleChange.bind(this, 'amount')}
+						/>
+					</Col>
+				</FormGroup>
+				<FormGroup row>
+					<Label htmlFor="type" sm={3}>Type: </Label>
+					<Col sm={9}>
+						<Input
+							type="text"
+							name="type"
+							value={this.state.type}
+							onChange={this.handleChange.bind(this, 'type')}
+						/>
+					</Col>
+				</FormGroup>
+				<Col sm={12}>
+					<button
+						type="submit"
+						onClick={this.handleSubmit}
+						className="btn btn-block btn-primary"
+					>
+						Submit
+					</button>
+				</Col>
+				{/* <Button onClick={this.handleSubmit}>Submit</Button> */}
+
+				{/* <form className="ExpenseForm">
+				<Button>Submit</Button>
 				<label htmlFor="details">Details:</label>
 				<input
-					type="text"
-					name="details"
-					value={this.state.details}
-					onChange={this.handleChange.bind(this, 'details')}
-				/>
-				<label htmlFor="amount">Amount:</label>
-				<input
-					type="text"
-					name="amount"
-					value={this.state.amount}
-					onChange={this.handleChange.bind(this, 'amount')}
-				/>
-				<label htmlFor="type">Type:</label>
-				<input
-					type="text"
-					name="type"
-					value={this.state.type}
-					onChange={this.handleChange.bind(this, 'type')}
-				/>
-				<button type="submit" onClick={this.handleSubmit}> Submit </button>
-			</form>
+				type="text"
+				name="details"
+				value={this.state.details}
+				onChange={this.handleChange.bind(this, 'details')}
+			/>
+			<label htmlFor="amount">Amount:</label>
+			<input
+			type="text"
+			name="amount"
+			value={this.state.amount}
+			onChange={this.handleChange.bind(this, 'amount')}
+		/>
+		<label htmlFor="type">Type:</label>
+		<input
+		type="text"
+		name="type"
+		value={this.state.type}
+		onChange={this.handleChange.bind(this, 'type')}
+	/>
+	<button type="submit" onClick={this.handleSubmit}> Submit </button>
+</form> */}
+			</Form>
 		)
 	}
 }
