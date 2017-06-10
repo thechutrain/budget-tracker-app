@@ -1,6 +1,15 @@
 import React, { Component } from 'react'
 import Moment from 'moment'
-import { Form, FormGroup, Label, Input, Col } from 'reactstrap'
+import {
+	Card,
+	CardHeader,
+	CardBlock,
+	Form,
+	FormGroup,
+	Label,
+	Input,
+	Col
+} from 'reactstrap'
 
 class ExpenseForm extends Component {
 	constructor(props) {
@@ -29,51 +38,57 @@ class ExpenseForm extends Component {
 
 	render() {
 		return (
-			<Form>
-				<FormGroup row>
-					<Label htmlFor="details" sm={3}>Details:</Label>
-					<Col sm={9}>
-						<Input
-							type="text"
-							name="details"
-							value={this.state.details}
-							onChange={this.handleChange.bind(this, 'details')}
-						/>
-					</Col>
-				</FormGroup>
-				<FormGroup row>
-					<Label htmlFor="amount" sm={3}> Amount: </Label>
-					<Col sm={9}>
-						<Input
-							type="number"
-							name="amount"
-							value={this.state.amount}
-							onChange={this.handleChange.bind(this, 'amount')}
-						/>
-					</Col>
-				</FormGroup>
-				<FormGroup row>
-					<Label htmlFor="type" sm={3}>Type: </Label>
-					<Col sm={9}>
-						<Input
-							type="text"
-							name="type"
-							value={this.state.type}
-							onChange={this.handleChange.bind(this, 'type')}
-						/>
-					</Col>
-				</FormGroup>
-				<Col sm={12}>
-					<button
-						type="submit"
-						onClick={this.handleSubmit}
-						className="btn btn-block btn-primary"
-					>
-						Submit
-					</button>
-				</Col>
-				{/* <Button onClick={this.handleSubmit}>Submit</Button> */}
-			</Form>
+			<Card>
+				<CardHeader> <h3>Add an Expense: </h3></CardHeader>
+				<CardBlock>
+					<Form>
+						<FormGroup row>
+							<Label htmlFor="details" sm={3}>Details:</Label>
+							<Col sm={9}>
+								<Input
+									type="text"
+									name="details"
+									value={this.state.details}
+									onChange={this.handleChange.bind(this, 'details')}
+								/>
+							</Col>
+						</FormGroup>
+						<FormGroup row>
+							<Label htmlFor="amount" sm={3}> Amount: </Label>
+							<Col sm={9}>
+								<Input
+									type="number"
+									name="amount"
+									value={this.state.amount}
+									onChange={this.handleChange.bind(this, 'amount')}
+								/>
+							</Col>
+						</FormGroup>
+						<FormGroup row>
+							<Label htmlFor="type" sm={3}>Type: </Label>
+							<Col sm={9}>
+								<Input
+									type="text"
+									name="type"
+									value={this.state.type}
+									onChange={this.handleChange.bind(this, 'type')}
+								/>
+							</Col>
+						</FormGroup>
+						<Col sm={12}>
+							<button
+								type="submit"
+								onClick={this.handleSubmit}
+								className="btn btn-block btn-primary"
+							>
+								Submit
+							</button>
+						</Col>
+						{/* <Button onClick={this.handleSubmit}>Submit</Button> */}
+					</Form>
+
+				</CardBlock>
+			</Card>
 		)
 	}
 }

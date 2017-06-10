@@ -1,5 +1,6 @@
 import React from 'react'
 import Moment from 'moment'
+import { Card, CardHeader, CardBlock } from 'reactstrap'
 
 // ======== helper function ========
 const ExpenseRow = (props, _removeExpense) => {
@@ -27,22 +28,27 @@ const ExpenseRow = (props, _removeExpense) => {
 // ======== Main render component ========
 const ExpenseTable = props => {
 	return (
-		<table>
-			<thead>
-				<tr>
-					<th> Date: </th>
-					<th> Type: </th>
-					<th> Details: </th>
-					<th> Amount: </th>
-					<th> Edit/Remove </th>
-				</tr>
-			</thead>
-			<tbody>
-				{props.expenses.map(expense =>
-					ExpenseRow(expense, props._removeExpense)
-				)}
-			</tbody>
-		</table>
+		<Card>
+			<CardHeader><h3>Your Expenses:</h3></CardHeader>
+			<CardBlock>
+				<table>
+					<thead>
+						<tr>
+							<th> Date: </th>
+							<th> Type: </th>
+							<th> Details: </th>
+							<th> Amount: </th>
+							<th> Edit/Remove </th>
+						</tr>
+					</thead>
+					<tbody>
+						{props.expenses.map(expense =>
+							ExpenseRow(expense, props._removeExpense)
+						)}
+					</tbody>
+				</table>
+			</CardBlock>
+		</Card>
 	)
 }
 
