@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+// import PropTypes from 'react'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
@@ -19,14 +20,20 @@ class Expenses extends Component {
 			expenseDisplay = (
 				<ExpenseTable
 					expenses={this.props.expenses}
-					_removeExpense={this.props._removeExpense}
+					_removeExpense={id => {
+						this.props.dispatch(removeExpense(id))
+					}}
 				/>
 			)
 		}
 		return (
 			<div className="Expenses">
 				<h1>Add an Expense: </h1>
-				<ExpenseForm _addExpense={this.props._addExpense} />
+				<ExpenseForm
+					_addExpense={expObj => {
+						this.props.dispatch(addExpense(expObj))
+					}}
+				/>
 				{/*  ====== Table ======*/}
 				{expenseDisplay}
 				{/* {return this.props.expenses.length !==0 (<ExpenseTable expenses={this.props.expenses} />) : (<p>No Expenses to Display</p>)} */}
@@ -35,25 +42,15 @@ class Expenses extends Component {
 	}
 }
 
-// Tieing in Redux
+// ======== PropTypes =========
+// Expenses.propTypes = {
+// 	expenses: PropTypes.func
+// }
+
+// ========= Tieing in Redux =========
 const mapStateToProps = store => {
 	return {
 		expenses: store.expenses
-		// store: store
 	}
 }
-const mapDispatchToProps = dispatch => {
-	return {
-		_removeExpense: id => {
-			dispatch(removeExpense(id))
-		},
-		_addExpense: expObj => {
-			dispatch(addExpense(expObj))
-		}
-		// onExpenseSubmit: expense => {
-		// 	dispatch(addExpense(expense))
-		// }
-	}
-}
-export default connect(mapStateToProps, mapDispatchToProps)(Expenses)
-// export default connect(mapStateToProps)(Expenses)
+export default connect(mapStateToProps)(Expenses)
