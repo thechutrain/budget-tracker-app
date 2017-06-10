@@ -3,12 +3,18 @@ import Moment from 'moment'
 
 // helper function
 function displayRow(props) {
+	// WONT WORK YO
+	// onClick = e => {
+	// 	e.preventDefault()
+	// 	alert('I was clicked!')
+	// }
 	return (
 		<tr key={props._id}>
 			<td>{Moment(props.date).format('MMMM Do')}</td>
 			<td>{props.details}</td>
 			<td>{props.type}</td>
 			<td>{props.amount}</td>
+			<td> EDIT/REMOVE smart component?</td>
 		</tr>
 	)
 }
@@ -22,6 +28,7 @@ const ExpenseTable = props => {
 					<th> Type: </th>
 					<th> Details: </th>
 					<th> Amount: </th>
+					<th> Edit/Remove </th>
 				</tr>
 			</thead>
 			<tbody>
