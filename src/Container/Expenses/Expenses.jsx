@@ -32,7 +32,7 @@ class Expenses extends Component {
 // Tieing in Redux
 const mapStateToProps = store => {
 	return {
-		expenses: store.expenseReducer
+		expenses: store.expenses
 		// store: store
 	}
 }
