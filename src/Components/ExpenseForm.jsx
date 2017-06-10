@@ -75,32 +75,6 @@ class ExpenseForm extends Component {
 					</button>
 				</Col>
 				{/* <Button onClick={this.handleSubmit}>Submit</Button> */}
-
-				{/* <form className="ExpenseForm">
-				<Button>Submit</Button>
-				<label htmlFor="details">Details:</label>
-				<input
-				type="text"
-				name="details"
-				value={this.state.details}
-				onChange={this.handleChange.bind(this, 'details')}
-			/>
-			<label htmlFor="amount">Amount:</label>
-			<input
-			type="text"
-			name="amount"
-			value={this.state.amount}
-			onChange={this.handleChange.bind(this, 'amount')}
-		/>
-		<label htmlFor="type">Type:</label>
-		<input
-		type="text"
-		name="type"
-		value={this.state.type}
-		onChange={this.handleChange.bind(this, 'type')}
-	/>
-	<button type="submit" onClick={this.handleSubmit}> Submit </button>
-</form> */}
 			</Form>
 		)
 	}
