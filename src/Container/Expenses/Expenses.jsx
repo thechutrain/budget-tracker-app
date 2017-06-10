@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
-
 import ExpenseForm from '../../Components/ExpenseForm.jsx'
 import ExpenseTable from '../../Components/ExpenseTable.jsx'
+// Redux actions
+import { addExpense, removeExpense } from '../../actions/expenseActions'
 
 class Expenses extends Component {
 	// constructor(props) {
@@ -15,12 +16,17 @@ class Expenses extends Component {
 		if (this.props.expenses.length === 0) {
 			expenseDisplay = <p>No Expenses to Display</p>
 		} else {
-			expenseDisplay = <ExpenseTable expenses={this.props.expenses} />
+			expenseDisplay = (
+				<ExpenseTable
+					expenses={this.props.expenses}
+					onExpenseRemove={this.props.onExpenseRemove}
+				/>
+			)
 		}
 		return (
 			<div className="Expenses">
 				<h1>Add an Expense: </h1>
-				<ExpenseForm />
+				<ExpenseForm dispatchAddExpense={this.props.dispatchAddExpense} />
 				{/*  ====== Table ======*/}
 				{expenseDisplay}
 				{/* {return this.props.expenses.length !==0 (<ExpenseTable expenses={this.props.expenses} />) : (<p>No Expenses to Display</p>)} */}
@@ -36,12 +42,18 @@ const mapStateToProps = store => {
 		// store: store
 	}
 }
-// const mapDispatchToProps = dispatch => {
-// 	return {
-// 		onExpenseSubmit: expense => {
-// 			dispatch(addExpense(expense))
-// 		}
-// 	}
-// }
-// export default connect(mapStateToProps, mapDispatchToProps)(Expenses)
-export default connect(mapStateToProps)(Expenses)
+const mapDispatchToProps = dispatch => {
+	return {
+		onExpenseRemove: id => {
+			dispatch(removeExpense(id))
+		},
+		dispatchAddExpense: expObj => {
+			dispatch(addExpense(expObj))
+		}
+		// onExpenseSubmit: expense => {
+		// 	dispatch(addExpense(expense))
+		// }
+	}
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Expenses)
+// export default connect(mapStateToProps)(Expenses)

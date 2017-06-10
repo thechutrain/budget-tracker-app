@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import Moment from 'moment'
 import { Form, FormGroup, Label, Input, Col } from 'reactstrap'
-// Redux actions
-import { addExpense } from '../actions/expenseActions'
-import store from '../store.js'
 
 class ExpenseForm extends Component {
 	constructor(props) {
@@ -20,7 +17,8 @@ class ExpenseForm extends Component {
 	}
 	handleSubmit = e => {
 		e.preventDefault() // NECESSARY, or else it'll submit to itself
-		store.dispatch(addExpense(this.state))
+		// store.dispatch(addExpense(this.state))
+		this.props.dispatchAddExpense(this.state)
 		this.setState({
 			details: '',
 			amount: '',
