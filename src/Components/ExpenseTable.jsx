@@ -1,29 +1,26 @@
-import React from 'react'
+import React, { Component } from 'react'
 import Moment from 'moment'
-// Redux actions
-// import { removeExpense } from '../actions/expenseActions'
-// import store from '../store.js'
 
 // ======== helper function ========
-// function deleteRow(id) {
-// 	return (
-// 		<div>
-// 			<p onClick={store.dispatch(removeExpense(id))}>delete me: {id}</p>
-// 			{/* <p>{JSON.stringify(props)}</p> */}
-// 		</div>
-// 	)
-// }
-
-function displayRow(props) {
-	return (
-		<tr key={props._id}>
-			<td>{Moment(props.date).format('MMMM Do')}</td>
-			<td>{props.details}</td>
-			<td>{props.type}</td>
-			<td>{props.amount}</td>
-			{/* <td> {deleteRow(props._id)}</td> */}
-		</tr>
-	)
+class NewRow extends Component {
+	handleDelete = e => {
+		e.preventDefault()
+		this.props._removeExpense(this.props.expense._id)
+	}
+	render() {
+		const { date, details, type, amount } = this.props.expense
+		return (
+			<tr>
+				<td>{Moment(date).format('MMMM Do')}</td>
+				<td>{details}</td>
+				<td>{type}</td>
+				<td>{amount}</td>
+				<td onClick={this.handleDelete}>
+					<button className="btn btn-block btn-danger">Delete</button>
+				</td>
+			</tr>
+		)
+	}
 }
 
 // ======== Main render component ========
@@ -40,10 +37,13 @@ const ExpenseTable = props => {
 				</tr>
 			</thead>
 			<tbody>
-				{/* {this.props.expenses.map(expense =>
-					<ExpenseRow {...expense} key={expense._id} />
-				)} */}
-				{props.expenses.map(expense => displayRow(expense))}
+				{props.expenses.map(expense =>
+					<NewRow
+						key={expense._id}
+						expense={expense}
+						_removeExpense={props._removeExpense}
+					/>
+				)}
 			</tbody>
 		</table>
 	)
