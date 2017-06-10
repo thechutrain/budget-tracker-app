@@ -45,7 +45,7 @@ class ExpenseForm extends Component {
 					<Label htmlFor="amount" sm={3}> Amount: </Label>
 					<Col sm={9}>
 						<Input
-							type="text"
+							type="number"
 							name="amount"
 							value={this.state.amount}
 							onChange={this.handleChange.bind(this, 'amount')}
