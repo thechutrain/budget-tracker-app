@@ -18,6 +18,7 @@ if (process.env.NODE_ENV === 'production') {
 				: f => f
 		)
 	)
+	// store = createStore(reducers, applyMiddleware(thunk, createLogger()))
 }
 
 export default store
