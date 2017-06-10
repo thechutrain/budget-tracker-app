@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import PropTypes from 'react'
+import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
@@ -43,9 +43,9 @@ class Expenses extends Component {
 }
 
 // ======== PropTypes =========
-// Expenses.propTypes = {
-// 	expenses: PropTypes.func
-// }
+Expenses.propTypes = {
+	expenses: PropTypes.array.isRequired
+}
 
 // ========= Tieing in Redux =========
 const mapStateToProps = store => {
