@@ -1,7 +1,8 @@
 import {
 	SET_USERNAME,
 	ADD_CATEGORY,
-	REMOVE_CATEGORY
+	REMOVE_CATEGORY,
+	UPDATE_CATEGORY_BUDGET
 } from '../actions/userActions'
 import { toJS, fromJS } from 'immutable'
 
@@ -22,7 +23,6 @@ const defaultUserSettings = {
 // =========== HELPER reducers =========
 function addCategoryReducer(state, action) {
 	const categories = fromJS(state.categories).toJS()
-	// console.warn(categories)
 	const newCategory = Object.assign(
 		{},
 		{ category: '', monthlyBudget: 0 },
@@ -31,7 +31,7 @@ function addCategoryReducer(state, action) {
 			monthlyBudget: action.payload.monthlyBudget
 		}
 	)
-	categories.push(action.payload)
+	categories.push(newCategory)
 	return Object.assign({}, state, { categories })
 }
 
@@ -43,6 +43,18 @@ function removeCategoryReducer(state, action) {
 	return Object.assign({}, state, { categories: categoriesUpdate })
 }
 
+function updateBudgetReducer(state, action) {
+	const categoriesCopy = fromJS(state.categories).toJS()
+	const categoriesUpdate = categoriesCopy.map(category => {
+		if (category.category === action.payload.category) {
+			return {
+				category: category.category,
+				monthlyBudget: action.payload.monthlyBudget
+			}
+		} else return category
+	})
+	return Object.assign({}, state, { categories: categoriesUpdate })
+}
 // ======= MAIN Reducer ============
 function userReducer(state = defaultUserSettings, action) {
 	// switch statement on action.type
@@ -53,6 +65,8 @@ function userReducer(state = defaultUserSettings, action) {
 			return addCategoryReducer(state, action)
 		case REMOVE_CATEGORY:
 			return removeCategoryReducer(state, action)
+		case UPDATE_CATEGORY_BUDGET:
+			return updateBudgetReducer(state, action)
 		default:
 			return state
 	}

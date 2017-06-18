@@ -7,7 +7,11 @@ import { Provider } from 'react-redux'
 // import { addExpense } from './actions/expenseActions'
 // import { addExpense, removeExpense } from './actions/expenseActions'
 // import { setUsername, addCategory } from './actions/userActions'
-import { addCategory, removeCategory } from './actions/userActions'
+import {
+	addCategory,
+	removeCategory,
+	updateCategoryBudget
+} from './actions/userActions'
 
 ReactDOM.render(
 	<Provider store={store}><App /></Provider>,
@@ -15,8 +19,10 @@ ReactDOM.render(
 )
 
 // ========== TESTING ===========
+// WORKIng
 store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
-store.dispatch(removeCategory('grocery'))
+// store.dispatch(removeCategory('grocery'))
+store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
 
 // ===== Testing ============
 // store.dispatch({ type: 'ADD_EXPENSE' })

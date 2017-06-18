@@ -32,6 +32,7 @@ class Expenses extends Component {
 					_addExpense={expObj => {
 						this.props.dispatch(addExpense(expObj))
 					}}
+					categories={this.props.categories}
 				/>
 				{/*  ====== Table ======*/}
 				{expenseDisplay}
@@ -49,7 +50,8 @@ Expenses.propTypes = {
 // ========= Tieing in Redux =========
 const mapStateToProps = store => {
 	return {
-		expenses: store.expenses
+		expenses: store.expenses,
+		categories: store.userSettings.categories
 	}
 }
 export default connect(mapStateToProps)(Expenses)

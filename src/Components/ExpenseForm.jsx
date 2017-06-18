@@ -73,6 +73,11 @@ class ExpenseForm extends Component {
 									value={this.state.type}
 									onChange={this.handleChange.bind(this, 'type')}
 								/>
+								{/* <select name="" id="">
+									{this.props.categories.map(catObj =>
+										<option value={catObj.category}>{catObj.category}</option>
+									)}
+								</select> */}
 							</Col>
 						</FormGroup>
 						<Col sm={12}>
