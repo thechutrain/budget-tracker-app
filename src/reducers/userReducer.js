@@ -10,15 +10,15 @@ import { toJS, fromJS } from 'immutable'
 // ========SAMPLE userSettings structure====
 // userSettings: {
 //   name: 'Alan',
-//   categories: [
-//     { category: 'Grocery', monthlyBudget: 125.75},
-//     { category: 'Dinning', monthlyBudget: 120}
-//   ],
+//   categories: {
+// 		'grocery': 125,
+// 		'utilities': 35,
+// 	},
 // }
 const defaultUserSettings = {
 	name: '',
 	categories: {},
-	monthlyBudget: null
+	monthlyBudget: 0
 }
 
 // =========== HELPER reducers =========
@@ -33,34 +33,21 @@ function removeCategoryReducer(state, action) {
 	delete categories[action.payload]
 	return Object.assign({}, state, { categories })
 }
-// function removeCategoryReducer(state, action) {
-// 	const categoriesCopy = fromJS(state.categories).toJS()
-// 	const categoriesUpdate = categoriesCopy.filter(
-// 		category => category.category !== action.payload
-// 	)
-// 	return Object.assign({}, state, { categories: categoriesUpdate })
-// }
-//
-// function updateBudgetReducer(state, action) {
-// 	const categoriesCopy = fromJS(state.categories).toJS()
-// 	const categoriesUpdate = categoriesCopy.map(category => {
-// 		if (category.category === action.payload.category) {
-// 			return {
-// 				category: category.category,
-// 				monthlyBudget: action.payload.monthlyBudget
-// 			}
-// 		} else return category
-// 	})
-// 	return Object.assign({}, state, { categories: categoriesUpdate })
-// }
-//
-// function updateTotalBudgetReducer(state, action) {
-// 	let monthlyBudget = 0
-// 	state.categories.forEach(category => {
-// 		monthlyBudget += category.monthlyBudget
-// 	})
-// 	return Object.assign({}, state, { monthlyBudget })
-// }
+
+function updateCategoryBudgetReducer(state, action) {
+	const categories = fromJS(state.categories).toJS()
+	categories[action.payload.category] = action.payload.monthlyBudget
+	return Object.assign({}, state, { categories })
+}
+
+function updateTotalBudgetReducer(state, action) {
+	let monthlyBudget = 0
+	for (let key in state.categories) {
+		monthlyBudget += state.categories[key]
+	}
+	return Object.assign({}, state, { monthlyBudget })
+}
+
 // ======= MAIN Reducer ============
 function userReducer(state = defaultUserSettings, action) {
 	// switch statement on action.type
@@ -71,10 +58,10 @@ function userReducer(state = defaultUserSettings, action) {
 			return addCategoryReducer(state, action)
 		case REMOVE_CATEGORY:
 			return removeCategoryReducer(state, action)
-		// case UPDATE_CATEGORY_BUDGET:
-		// 	return updateBudgetReducer(state, action)
-		// case UPDATE_TOTAL_BUDGET:
-		// 	return updateTotalBudgetReducer(state, action)
+		case UPDATE_CATEGORY_BUDGET:
+			return updateCategoryBudgetReducer(state, action)
+		case UPDATE_TOTAL_BUDGET:
+			return updateTotalBudgetReducer(state, action)
 		default:
 			return state
 	}

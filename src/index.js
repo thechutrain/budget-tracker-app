@@ -6,13 +6,12 @@ import { Provider } from 'react-redux'
 // ======= TESTING PURPOSES ============
 // import { addExpense } from './actions/expenseActions'
 // import { addExpense, removeExpense } from './actions/expenseActions'
-// import { setUsername, addCategory } from './actions/userActions'
-import {
-	addCategory,
-	removeCategory,
-	updateCategoryBudget,
-	updateTotalBudget
-} from './actions/userActions'
+// import {
+// 	addCategory,
+// 	removeCategory,
+// 	updateCategoryBudget,
+// 	updateTotalBudget
+// } from './actions/userActions'
 
 ReactDOM.render(
 	<Provider store={store}><App /></Provider>,
@@ -21,8 +20,11 @@ ReactDOM.render(
 
 // ========== TESTING ===========
 // WORKIng
-store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
-store.dispatch(removeCategory('grocery'))
+// store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
+// store.dispatch(addCategory({ category: 'water', monthlyBudget: 25 }))
+// store.dispatch(removeCategory('grocery'))
+// store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
+
 // store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
 // store.dispatch(addCategory({ category: 'electricity', monthlyBudget: 66 }))
 // store.dispatch(updateTotalBudget())
