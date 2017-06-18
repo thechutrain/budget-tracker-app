@@ -46,3 +46,10 @@ export function updateCategoryBudget(catObj) {
 export function updateTotalBudget() {
 	return { type: UPDATE_TOTAL_BUDGET }
 }
+
+// USING THUNK
+// export function updateTotalBudget() {
+// 	return function(dispatch, getState) {
+// 		return dispatch({ type: UPDATE_TOTAL_BUDGET })
+// 	}
+// }

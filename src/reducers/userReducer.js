@@ -59,7 +59,7 @@ function updateBudgetReducer(state, action) {
 
 function updateTotalBudgetReducer(state, action) {
 	let monthlyBudget = 0
-	state.categories.map(category => {
+	state.categories.forEach(category => {
 		monthlyBudget += category.monthlyBudget
 	})
 	return Object.assign({}, state, { monthlyBudget })
