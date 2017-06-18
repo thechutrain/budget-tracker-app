@@ -2,7 +2,8 @@ import {
 	SET_USERNAME,
 	ADD_CATEGORY,
 	REMOVE_CATEGORY,
-	UPDATE_CATEGORY_BUDGET
+	UPDATE_CATEGORY_BUDGET,
+	UPDATE_TOTAL_BUDGET
 } from '../actions/userActions'
 import { toJS, fromJS } from 'immutable'
 
@@ -55,6 +56,14 @@ function updateBudgetReducer(state, action) {
 	})
 	return Object.assign({}, state, { categories: categoriesUpdate })
 }
+
+function updateTotalBudgetReducer(state, action) {
+	let monthlyBudget = 0
+	state.categories.map(category => {
+		monthlyBudget += category.monthlyBudget
+	})
+	return Object.assign({}, state, { monthlyBudget })
+}
 // ======= MAIN Reducer ============
 function userReducer(state = defaultUserSettings, action) {
 	// switch statement on action.type
@@ -67,6 +76,8 @@ function userReducer(state = defaultUserSettings, action) {
 			return removeCategoryReducer(state, action)
 		case UPDATE_CATEGORY_BUDGET:
 			return updateBudgetReducer(state, action)
+		case UPDATE_TOTAL_BUDGET:
+			return updateTotalBudgetReducer(state, action)
 		default:
 			return state
 	}

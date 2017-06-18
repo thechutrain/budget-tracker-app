@@ -5,6 +5,7 @@ export const SET_USERNAME = 'SET_USERNAME'
 export const ADD_CATEGORY = 'ADD_CATEGORY'
 export const REMOVE_CATEGORY = 'REMOVE_CATEGORY'
 export const UPDATE_CATEGORY_BUDGET = 'UPDATE_CATEGORY_BUDGET'
+export const UPDATE_TOTAL_BUDGET = 'UPDATE_TOTAL_BUDGET'
 
 /*
 * action creators
@@ -40,4 +41,8 @@ export function updateCategoryBudget(catObj) {
 		type: UPDATE_CATEGORY_BUDGET,
 		payload: catObj // { cateogry: string, monthlyBudget: number}
 	}
+}
+
+export function updateTotalBudget() {
+	return { type: UPDATE_TOTAL_BUDGET }
 }
