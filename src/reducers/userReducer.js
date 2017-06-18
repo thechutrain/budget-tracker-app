@@ -17,53 +17,46 @@ import { toJS, fromJS } from 'immutable'
 // }
 const defaultUserSettings = {
 	name: '',
-	categories: [],
+	categories: {},
 	monthlyBudget: null
 }
 
 // =========== HELPER reducers =========
 function addCategoryReducer(state, action) {
 	const categories = fromJS(state.categories).toJS()
-	const newCategory = Object.assign(
-		{},
-		{ category: '', monthlyBudget: 0 },
-		{
-			category: action.payload.category,
-			monthlyBudget: action.payload.monthlyBudget
-		}
-	)
-	categories.push(newCategory)
+	categories[action.payload.category] = action.payload.monthlyBudget || 0
 	return Object.assign({}, state, { categories })
 }
 
-function removeCategoryReducer(state, action) {
-	const categoriesCopy = fromJS(state.categories).toJS()
-	const categoriesUpdate = categoriesCopy.filter(
-		category => category.category !== action.payload
-	)
-	return Object.assign({}, state, { categories: categoriesUpdate })
-}
-
-function updateBudgetReducer(state, action) {
-	const categoriesCopy = fromJS(state.categories).toJS()
-	const categoriesUpdate = categoriesCopy.map(category => {
-		if (category.category === action.payload.category) {
-			return {
-				category: category.category,
-				monthlyBudget: action.payload.monthlyBudget
-			}
-		} else return category
-	})
-	return Object.assign({}, state, { categories: categoriesUpdate })
-}
-
-function updateTotalBudgetReducer(state, action) {
-	let monthlyBudget = 0
-	state.categories.forEach(category => {
-		monthlyBudget += category.monthlyBudget
-	})
-	return Object.assign({}, state, { monthlyBudget })
-}
+// function removeCategoryReducer(state, action){}
+// function removeCategoryReducer(state, action) {
+// 	const categoriesCopy = fromJS(state.categories).toJS()
+// 	const categoriesUpdate = categoriesCopy.filter(
+// 		category => category.category !== action.payload
+// 	)
+// 	return Object.assign({}, state, { categories: categoriesUpdate })
+// }
+//
+// function updateBudgetReducer(state, action) {
+// 	const categoriesCopy = fromJS(state.categories).toJS()
+// 	const categoriesUpdate = categoriesCopy.map(category => {
+// 		if (category.category === action.payload.category) {
+// 			return {
+// 				category: category.category,
+// 				monthlyBudget: action.payload.monthlyBudget
+// 			}
+// 		} else return category
+// 	})
+// 	return Object.assign({}, state, { categories: categoriesUpdate })
+// }
+//
+// function updateTotalBudgetReducer(state, action) {
+// 	let monthlyBudget = 0
+// 	state.categories.forEach(category => {
+// 		monthlyBudget += category.monthlyBudget
+// 	})
+// 	return Object.assign({}, state, { monthlyBudget })
+// }
 // ======= MAIN Reducer ============
 function userReducer(state = defaultUserSettings, action) {
 	// switch statement on action.type
@@ -72,12 +65,12 @@ function userReducer(state = defaultUserSettings, action) {
 			return Object.assign({}, state, { name: action.payload })
 		case ADD_CATEGORY:
 			return addCategoryReducer(state, action)
-		case REMOVE_CATEGORY:
-			return removeCategoryReducer(state, action)
-		case UPDATE_CATEGORY_BUDGET:
-			return updateBudgetReducer(state, action)
-		case UPDATE_TOTAL_BUDGET:
-			return updateTotalBudgetReducer(state, action)
+		// case REMOVE_CATEGORY:
+		// 	return removeCategoryReducer(state, action)
+		// case UPDATE_CATEGORY_BUDGET:
+		// 	return updateBudgetReducer(state, action)
+		// case UPDATE_TOTAL_BUDGET:
+		// 	return updateTotalBudgetReducer(state, action)
 		default:
 			return state
 	}

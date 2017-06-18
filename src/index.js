@@ -23,9 +23,9 @@ ReactDOM.render(
 // WORKIng
 store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
 // store.dispatch(removeCategory('grocery'))
-store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
-store.dispatch(addCategory({ category: 'electricity', monthlyBudget: 66 }))
-store.dispatch(updateTotalBudget())
+// store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
+// store.dispatch(addCategory({ category: 'electricity', monthlyBudget: 66 }))
+// store.dispatch(updateTotalBudget())
 // ===== Testing ============
 // store.dispatch({ type: 'ADD_EXPENSE' })
 // store.dispatch(
