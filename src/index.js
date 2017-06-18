@@ -4,39 +4,44 @@ import App from './App/App'
 import store from './store'
 import { Provider } from 'react-redux'
 // ======= TESTING PURPOSES ============
-import { addExpense } from './actions/expenseActions'
+// import { addExpense } from './actions/expenseActions'
 // import { addExpense, removeExpense } from './actions/expenseActions'
-import { setUsername, addCategory } from './actions/userActions'
+// import { setUsername, addCategory } from './actions/userActions'
+import { addCategory, removeCategory } from './actions/userActions'
 
 ReactDOM.render(
 	<Provider store={store}><App /></Provider>,
 	document.getElementById('root')
 )
 
+// ========== TESTING ===========
+store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
+store.dispatch(removeCategory('grocery'))
+
 // ===== Testing ============
 // store.dispatch({ type: 'ADD_EXPENSE' })
-store.dispatch(
-	addExpense({
-		amount: 19.99,
-		date: 1496966946 * 1000,
-		type: 'Dinning',
-		details: 'Trader Joes'
-	})
-)
-
-store.dispatch(setUsername('thechutrain'))
-store.dispatch(
-	addCategory({
-		type: 'Dinning',
-		monthlyBudget: 123
-	})
-)
-store.dispatch(
-	addCategory({
-		type: 'Groceries',
-		monthlyBudget: 130
-	})
-)
+// store.dispatch(
+// 	addExpense({
+// 		amount: 19.99,
+// 		date: 1496966946 * 1000,
+// 		type: 'Dinning',
+// 		details: 'Trader Joes'
+// 	})
+// )
+//
+// store.dispatch(setUsername('thechutrain'))
+// store.dispatch(
+// 	addCategory({
+// 		type: 'Dinning',
+// 		monthlyBudget: 123
+// 	})
+// )
+// store.dispatch(
+// 	addCategory({
+// 		type: 'Groceries',
+// 		monthlyBudget: 130
+// 	})
+// )
 // store.dispatch(
 // 	addExpense({
 // 		amount: 22.22,
