@@ -9,7 +9,7 @@ import { Provider } from 'react-redux'
 // import { setUsername, addCategory } from './actions/userActions'
 import {
 	addCategory,
-	// removeCategory,
+	removeCategory,
 	updateCategoryBudget,
 	updateTotalBudget
 } from './actions/userActions'
@@ -22,7 +22,7 @@ ReactDOM.render(
 // ========== TESTING ===========
 // WORKIng
 store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
-// store.dispatch(removeCategory('grocery'))
+store.dispatch(removeCategory('grocery'))
 // store.dispatch(updateCategoryBudget({ category: 'grocery', monthlyBudget: 99 }))
 // store.dispatch(addCategory({ category: 'electricity', monthlyBudget: 66 }))
 // store.dispatch(updateTotalBudget())

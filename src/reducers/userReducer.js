@@ -28,7 +28,11 @@ function addCategoryReducer(state, action) {
 	return Object.assign({}, state, { categories })
 }
 
-// function removeCategoryReducer(state, action){}
+function removeCategoryReducer(state, action) {
+	const categories = fromJS(state.categories).toJS()
+	delete categories[action.payload]
+	return Object.assign({}, state, { categories })
+}
 // function removeCategoryReducer(state, action) {
 // 	const categoriesCopy = fromJS(state.categories).toJS()
 // 	const categoriesUpdate = categoriesCopy.filter(
@@ -65,8 +69,8 @@ function userReducer(state = defaultUserSettings, action) {
 			return Object.assign({}, state, { name: action.payload })
 		case ADD_CATEGORY:
 			return addCategoryReducer(state, action)
-		// case REMOVE_CATEGORY:
-		// 	return removeCategoryReducer(state, action)
+		case REMOVE_CATEGORY:
+			return removeCategoryReducer(state, action)
 		// case UPDATE_CATEGORY_BUDGET:
 		// 	return updateBudgetReducer(state, action)
 		// case UPDATE_TOTAL_BUDGET:
