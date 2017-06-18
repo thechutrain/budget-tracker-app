@@ -16,12 +16,12 @@ function addCategoryReducer(state, action) {
 	return Object.assign({}, state, { categories })
 }
 
+// ======= Actual Reducer ============
 const defaultUserSettings = {
 	name: '',
 	categories: [],
 	monthlyBudget: null
 }
-// ======= Actual Reducer ============
 function userReducer(state = defaultUserSettings, action) {
 	// switch statement on action.type
 	switch (action.type) {
