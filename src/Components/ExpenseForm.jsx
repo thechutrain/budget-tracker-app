@@ -139,7 +139,6 @@ class ExpenseForm extends Component {
 						</Col>
 						{/* <Button onClick={this.handleSubmit}>Submit</Button> */}
 					</Form>
-
 				</CardBlock>
 			</Card>
 		)
