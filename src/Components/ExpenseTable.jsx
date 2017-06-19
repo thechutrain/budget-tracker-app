@@ -42,9 +42,9 @@ const ExpenseTable = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{props.expenses.map(expense =>
+						{/* {props.expenses.map(expense =>
 							ExpenseRow(expense, props._removeExpense)
-						)}
+						)} */}
 					</tbody>
 				</table>
 			</CardBlock>

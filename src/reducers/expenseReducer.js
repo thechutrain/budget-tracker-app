@@ -1,18 +1,29 @@
 import { ADD_EXPENSE, REMOVE_EXPENSE } from '../actions/expenseActions'
 import { fromJS, toJS } from 'immutable'
 
+// ========SAMPLE userExpenses ====
+// userExpenses: {
+//   rawExpenses: [
+// 		{ details: 'trader joes', amount: 12, date: 12312312, type: 'grocery', _id: 0},
+// 		{ details: 'trader joes', amount: 22, date: 12312312, type: 'grocery', _id: 1}
+// 	],
+// }
+
 // default state
 const defaultState = {
-	rawExpense: [],
-	orderedExpenses: [],
-	orderedBy: '',
-	totalExpenses: 0
+	rawExpenses: [],
+	totalExpenses: 0,
+	totalExpensesByCategory: {},
+	nextId: 0
 }
 
 // ======== Helper functions ==========
 function addExpenseReducer(state, payload) {
-	const clonedState = fromJS(state).toJS()
-	clonedState.rawExpenses.push(payload.expenseObj)
+	const newExpense = Object.assign({}, payload, { _id: state.nextId })
+	return fromJS(state)
+		.updateIn(['rawExpenses'], rawExpenses => rawExpenses.push(newExpense))
+		.update('nextId', nextId => (nextId += 1))
+		.toJS()
 }
 // function addExpenseReducer(state, payload) {
 // 	const _id = state.rawExpense.length
@@ -30,8 +41,8 @@ function expenseReducer(state = defaultState, action) {
 	switch (action.type) {
 		case ADD_EXPENSE:
 			return addExpenseReducer(state, action.payload)
-		case REMOVE_EXPENSE:
-			return removeExpenseReducer(state, action.payload)
+		// case REMOVE_EXPENSE:
+		// return removeExpenseReducer(state, action.payload)
 		default:
 			return state
 	}

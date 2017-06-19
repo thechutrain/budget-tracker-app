@@ -43,9 +43,9 @@ class Expenses extends Component {
 }
 
 // ======== PropTypes =========
-Expenses.propTypes = {
-	expenses: PropTypes.array.isRequired
-}
+// Expenses.propTypes = {
+// 	expenses: PropTypes.array.isRequired
+// }
 
 // ========= Tieing in Redux =========
 const mapStateToProps = store => {
