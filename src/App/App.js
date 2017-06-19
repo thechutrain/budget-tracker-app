@@ -3,6 +3,7 @@ import './App.css'
 import 'bootstrap/dist/css/bootstrap.css'
 // ==== other components ======
 import Expenses from '../Container/Expenses/Expenses.jsx'
+import UserSettings from '../Container/UserSettings/UserSettings.jsx'
 
 class App extends Component {
 	render() {
@@ -12,6 +13,7 @@ class App extends Component {
 					{/* <img src={logo} className="App-logo" alt="logo" /> */}
 					<h2>Welcome to Budge Tracker</h2>
 				</div>
+				<UserSettings />
 				<Expenses />
 			</div>
 		)

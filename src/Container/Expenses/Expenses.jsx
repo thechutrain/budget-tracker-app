@@ -27,7 +27,7 @@ class Expenses extends Component {
 			)
 		}
 		return (
-			<div className="Expenses">
+			<div className="Expenses mt-2">
 				<ExpenseForm
 					_addExpense={expObj => {
 						this.props.dispatch(addExpense(expObj))
