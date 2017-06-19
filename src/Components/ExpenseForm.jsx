@@ -79,22 +79,6 @@ class ExpenseForm extends Component {
 						<FormGroup row>
 							<Label htmlFor="type" sm={3}>Type: </Label>
 							<Col sm={9}>
-								{/* <Input
-									type="text"
-									name="type"
-									value={this.state.type}
-									onChange={this.handleChange.bind(this, 'type')}
-								/> */}
-								{/* <Input type="select">
-									{this.props.categories.map((category, index) => {
-										// return <p key={index}>{category}</p>
-										return (
-											<option key={index} value={category}>{category}</option>
-										)
-									})}
-
-								</Input> */}
-
 								<select
 									name="categoryType"
 									id=""
@@ -108,14 +92,6 @@ class ExpenseForm extends Component {
 										)
 									})}
 								</select>
-
-								{/* <select name="" id="">
-									{this.props.categories.map(catObj =>
-										<option key={catObj.category} value={catObj.category}>
-											{catObj.category}
-										</option>
-									)}
-								</select> */}
 							</Col>
 						</FormGroup>
 						<Col sm={12}>
