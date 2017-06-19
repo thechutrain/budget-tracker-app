@@ -32,7 +32,7 @@ class Expenses extends Component {
 					_addExpense={expObj => {
 						this.props.dispatch(addExpense(expObj))
 					}}
-					categories={this.props.categories}
+					categories={Object.keys(this.props.categories)}
 				/>
 				{/*  ====== Table ======*/}
 				{expenseDisplay}

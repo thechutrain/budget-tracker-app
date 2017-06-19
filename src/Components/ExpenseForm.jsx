@@ -17,9 +17,9 @@ class ExpenseForm extends Component {
 		this.state = {
 			details: '',
 			amount: '',
-			type: '',
 			date: Moment().unix() * 1000
 		}
+		// console.log(props.categories)
 	}
 	handleChange = (propertyName, event) => {
 		this.setState({ [propertyName]: event.target.value })
@@ -27,11 +27,15 @@ class ExpenseForm extends Component {
 	handleSubmit = e => {
 		e.preventDefault() // NECESSARY, or else it'll submit to itself
 		// store.dispatch(addExpense(this.state))
-		this.props._addExpense(this.state)
+		console.log(this.categoryType.value)
+		let newExpense = Object.assign({}, this.state, {
+			type: this.categoryType.value
+		})
+		this.categoryType.value = ''
+		this.props._addExpense(newExpense)
 		this.setState({
 			details: '',
 			amount: '',
-			type: '',
 			date: Moment().unix() * 1000
 		})
 	}
@@ -67,15 +71,41 @@ class ExpenseForm extends Component {
 						<FormGroup row>
 							<Label htmlFor="type" sm={3}>Type: </Label>
 							<Col sm={9}>
-								<Input
+								{/* <Input
 									type="text"
 									name="type"
 									value={this.state.type}
 									onChange={this.handleChange.bind(this, 'type')}
-								/>
+								/> */}
+								{/* <Input type="select">
+									{this.props.categories.map((category, index) => {
+										// return <p key={index}>{category}</p>
+										return (
+											<option key={index} value={category}>{category}</option>
+										)
+									})}
+
+								</Input> */}
+
+								<select
+									name="categoryType"
+									id=""
+									ref={input => (this.categoryType = input)}
+									className="custom-select"
+								>
+									<option value="--"> -- </option>
+									{this.props.categories.map((category, index) => {
+										return (
+											<option key={index} value={category}>{category}</option>
+										)
+									})}
+								</select>
+
 								{/* <select name="" id="">
 									{this.props.categories.map(catObj =>
-										<option value={catObj.category}>{catObj.category}</option>
+										<option key={catObj.category} value={catObj.category}>
+											{catObj.category}
+										</option>
 									)}
 								</select> */}
 							</Col>
