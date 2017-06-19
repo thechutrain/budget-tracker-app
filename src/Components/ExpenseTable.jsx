@@ -35,8 +35,8 @@ const ExpenseTable = props => {
 					<thead>
 						<tr>
 							<th> Date: </th>
-							<th> Type: </th>
 							<th> Details: </th>
+							<th> Type: </th>
 							<th> Amount: </th>
 							<th> Edit/Remove </th>
 						</tr>

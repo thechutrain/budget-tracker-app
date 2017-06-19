@@ -16,35 +16,35 @@ class ExpenseForm extends Component {
 		super(props)
 		this.state = {
 			details: '',
-			amount: '',
-			date: Moment().unix() * 1000
+			amount: ''
 		}
-		// console.log(props.categories)
 	}
 	handleChange = (propertyName, event) => {
 		this.setState({ [propertyName]: event.target.value })
 	}
 	handleSubmit = e => {
 		e.preventDefault() // NECESSARY, or else it'll submit to itself
-		// store.dispatch(addExpense(this.state))
+		// ====== Get all the values from ref! ========
 		console.log(this.categoryType.value)
-		let newExpense = Object.assign(
-			{},
-			{
-				details: this.state.details,
-				amount: parseInt(this.state.amount, 10),
-				date: this.state.date
-			},
-			{
-				type: this.categoryType.value
-			}
-		)
-		this.categoryType.value = ''
+		console.log(this.month.value)
+		let monthIndex = monthsArray.indexOf(this.month.value)
+		let day = parseInt(this.day.value, 10)
+		console.log(day)
+		const momentDate = Moment().year(2017).month(monthIndex).date(day)
+		// console.log(momentDate)
+		// create the new expense & add it to redux
+		let newExpense = {
+			details: this.state.details,
+			amount: parseInt(this.state.amount, 10),
+			date: momentDate.unix() * 1000,
+			type: this.categoryType.value
+		}
 		this.props._addExpense(newExpense)
+		// reset previous value
+		// this.categoryType.value = ''
 		this.setState({
 			details: '',
-			amount: '',
-			date: Moment().unix() * 1000
+			amount: ''
 		})
 	}
 
@@ -94,6 +94,31 @@ class ExpenseForm extends Component {
 								</select>
 							</Col>
 						</FormGroup>
+						<FormGroup row>
+							<Label sm={3}>Date:</Label>
+							<Col sm={5}>
+								<select
+									name="month"
+									className="custom-select"
+									ref={input => (this.month = input)}
+								>
+									{monthsArray.map(month => {
+										return <option key={month} value={month}>{month}</option>
+									})}
+								</select>
+							</Col>
+							<Col sm={4}>
+								<select
+									name="day"
+									className="custom-select"
+									ref={input => (this.day = input)}
+								>
+									{dayArray.map(day => {
+										return <option key={day} value={day}>{day}</option>
+									})}
+								</select>
+							</Col>
+						</FormGroup>
 						<Col sm={12}>
 							<button
 								type="submit"
@@ -113,3 +138,52 @@ class ExpenseForm extends Component {
 }
 
 export default ExpenseForm
+
+// CONSTANTS
+const monthsArray = [
+	'January',
+	'Febuary',
+	'March',
+	'April',
+	'May',
+	'June',
+	'July',
+	'August',
+	'September',
+	'October',
+	'November',
+	'December'
+]
+const dayArray = [
+	'1',
+	'2',
+	'3',
+	'4',
+	'5',
+	'6',
+	'7',
+	'8',
+	'9',
+	'10',
+	'11',
+	'12',
+	'13',
+	'14',
+	'15',
+	'16',
+	'17',
+	'18',
+	'19',
+	'20',
+	'21',
+	'22',
+	'23',
+	'24',
+	'25',
+	'26',
+	'27',
+	'28',
+	'29',
+	'30',
+	'31'
+]
