@@ -3,7 +3,7 @@ import expenseReducer from './expenseReducer'
 import userReducer from './userReducer'
 
 const reducers = combineReducers({
-	expenses: expenseReducer,
+	userExpenses: expenseReducer,
 	userSettings: userReducer
 })
 

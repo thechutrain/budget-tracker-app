@@ -50,7 +50,7 @@ Expenses.propTypes = {
 // ========= Tieing in Redux =========
 const mapStateToProps = store => {
 	return {
-		expenses: store.expenses,
+		expenses: store.userExpenses,
 		categories: store.userSettings.categories
 	}
 }
