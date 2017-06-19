@@ -28,9 +28,17 @@ class ExpenseForm extends Component {
 		e.preventDefault() // NECESSARY, or else it'll submit to itself
 		// store.dispatch(addExpense(this.state))
 		console.log(this.categoryType.value)
-		let newExpense = Object.assign({}, this.state, {
-			type: this.categoryType.value
-		})
+		let newExpense = Object.assign(
+			{},
+			{
+				details: this.state.details,
+				amount: parseInt(this.state.amount, 10),
+				date: this.state.date
+			},
+			{
+				type: this.categoryType.value
+			}
+		)
 		this.categoryType.value = ''
 		this.props._addExpense(newExpense)
 		this.setState({
