@@ -31,6 +31,14 @@ function addExpenseReducer(state, payload) {
 // 	return fromJS(state).update(v => v.push(newExpense)).toJS()
 // }
 
+function removeExpenseReducer(state, payload) {
+	const updatedState = fromJS(state).toJS()
+	updatedState.rawExpenses = updatedState.rawExpenses.filter(
+		expObj => expObj._id !== payload
+	)
+	return updatedState
+}
+
 // function removeExpenseReducer(state, payload) {
 // 	const removeId = payload
 // 	return state.filter(expense => expense._id !== removeId)
@@ -41,8 +49,8 @@ function expenseReducer(state = defaultState, action) {
 	switch (action.type) {
 		case ADD_EXPENSE:
 			return addExpenseReducer(state, action.payload)
-		// case REMOVE_EXPENSE:
-		// return removeExpenseReducer(state, action.payload)
+		case REMOVE_EXPENSE:
+			return removeExpenseReducer(state, action.payload)
 		default:
 			return state
 	}

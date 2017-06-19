@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
+// import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import './Expenses.css'
 // Display Components
@@ -14,12 +14,12 @@ class Expenses extends Component {
 	// }
 	render() {
 		let expenseDisplay = null
-		if (this.props.expenses.length === 0) {
+		if (this.props.rawExpenses.length === 0) {
 			expenseDisplay = <p>No Expenses to Display</p>
 		} else {
 			expenseDisplay = (
 				<ExpenseTable
-					expenses={this.props.expenses}
+					expenses={this.props.rawExpenses}
 					_removeExpense={id => {
 						this.props.dispatch(removeExpense(id))
 					}}
@@ -50,7 +50,7 @@ class Expenses extends Component {
 // ========= Tieing in Redux =========
 const mapStateToProps = store => {
 	return {
-		expenses: store.userExpenses,
+		rawExpenses: store.userExpenses.rawExpenses,
 		categories: store.userSettings.categories
 	}
 }

@@ -1,15 +1,6 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import {
-	Card,
-	CardHeader,
-	CardBlock,
-	Form,
-	FormGroup,
-	Label,
-	Input,
-	Col
-} from 'reactstrap'
+// import PropTypes from 'prop-types'
+import { Form, FormGroup, Label, Input, Col } from 'reactstrap'
 
 class DisplayCategoryForm extends Component {
 	constructor(props) {

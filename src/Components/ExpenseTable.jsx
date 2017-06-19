@@ -3,10 +3,10 @@ import Moment from 'moment'
 import { Card, CardHeader, CardBlock } from 'reactstrap'
 
 // ======== helper function ========
-const ExpenseRow = (props, _removeExpense) => {
-	const { date, details, type, amount, _id } = props
+const ExpenseRow = props => {
+	const { date, details, type, amount, _id, _removeExpense } = props
 	return (
-		<tr key={_id}>
+		<tr>
 			<td>{Moment(date).format('MMMM Do')}</td>
 			<td>{details}</td>
 			<td>{type}</td>
@@ -42,9 +42,14 @@ const ExpenseTable = props => {
 						</tr>
 					</thead>
 					<tbody>
-						{/* {props.expenses.map(expense =>
-							ExpenseRow(expense, props._removeExpense)
-						)} */}
+						{props.expenses.map(expense =>
+							// ExpenseRow(expense, props._removeExpense)
+							<ExpenseRow
+								key={expense._id}
+								{...expense}
+								_removeExpense={props._removeExpense}
+							/>
+						)}
 					</tbody>
 				</table>
 			</CardBlock>
