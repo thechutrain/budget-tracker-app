@@ -4,7 +4,7 @@ import App from './App/App'
 import store from './store'
 import { Provider } from 'react-redux'
 // ======= TESTING PURPOSES ============
-import { addExpense } from './actions/expenseActions'
+import { addExpense, updateTotalExpenses } from './actions/expenseActions'
 // import { addExpense, removeExpense } from './actions/expenseActions'
 // import {
 // 	addCategory,
@@ -36,6 +36,8 @@ store.dispatch(
 		details: 'shoprite'
 	})
 )
+
+// store.dispatch(updateTotalExpenses())
 
 // WORKIng
 // store.dispatch(addCategory({ category: 'grocery', monthlyBudget: 125 }))
