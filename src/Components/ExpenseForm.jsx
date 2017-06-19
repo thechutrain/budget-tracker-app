@@ -16,7 +16,9 @@ class ExpenseForm extends Component {
 		super(props)
 		this.state = {
 			details: '',
-			amount: ''
+			amount: '',
+			todayMonth: Moment().format('MMMM'),
+			todayDate: Moment().format('D')
 		}
 	}
 	handleChange = (propertyName, event) => {
@@ -101,9 +103,14 @@ class ExpenseForm extends Component {
 									name="month"
 									className="custom-select"
 									ref={input => (this.month = input)}
+									defaultValue={this.state.todayMonth}
 								>
 									{monthsArray.map(month => {
-										return <option key={month} value={month}>{month}</option>
+										return (
+											<option key={month} value={month}>
+												{month}
+											</option>
+										)
 									})}
 								</select>
 							</Col>
@@ -112,6 +119,7 @@ class ExpenseForm extends Component {
 									name="day"
 									className="custom-select"
 									ref={input => (this.day = input)}
+									defaultValue={this.state.todayDate}
 								>
 									{dayArray.map(day => {
 										return <option key={day} value={day}>{day}</option>
@@ -124,6 +132,7 @@ class ExpenseForm extends Component {
 								type="submit"
 								onClick={this.handleSubmit}
 								className="btn btn-block btn-primary"
+								disabled={this.state.details === '' || this.state.amount === ''}
 							>
 								Submit
 							</button>
