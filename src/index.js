@@ -4,7 +4,7 @@ import App from './App/App'
 import store from './store'
 import { Provider } from 'react-redux'
 // ======= TESTING PURPOSES ============
-import { addExpense, updateTotalExpenses } from './actions/expenseActions'
+// import { addExpense, updateTotalExpenses } from './actions/expenseActions'
 // import { addExpense, removeExpense } from './actions/expenseActions'
 // import {
 // 	addCategory,
@@ -19,23 +19,23 @@ ReactDOM.render(
 )
 
 // ========== TESTING ===========
-store.dispatch(
-	addExpense({
-		amount: 19.99,
-		date: 123122312312,
-		type: 'grocery',
-		details: 'Trader Joes'
-	})
-)
-
-store.dispatch(
-	addExpense({
-		amount: 11.11,
-		date: 123122312312,
-		type: 'grocery',
-		details: 'shoprite'
-	})
-)
+// store.dispatch(
+// 	addExpense({
+// 		amount: 19.99,
+// 		date: 123122312312,
+// 		type: 'grocery',
+// 		details: 'Trader Joes'
+// 	})
+// )
+//
+// store.dispatch(
+// 	addExpense({
+// 		amount: 11.11,
+// 		date: 123122312312,
+// 		type: 'grocery',
+// 		details: 'shoprite'
+// 	})
+// )
 
 // store.dispatch(updateTotalExpenses())
 
