@@ -16,6 +16,7 @@
     "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "react-scripts": "1.0.7",
     "redux-logger": "^3.0.6"
   },
@@ -27,5 +28,5 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build"
   },
-  "homepage" : "http://thechutrain.github.io/budget-tracker-app"
+  "homepage": "http://thechutrain.github.io/budget-tracker-app"
 }
